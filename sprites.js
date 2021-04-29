@@ -1,6 +1,9 @@
+
+
 let ssh;
 let sd;
 let animation=[];
+let horses=[];
 function preload(){
     sd=loadJSON('horse.json')
     ssh=loadImage("horse.png");
@@ -15,15 +18,19 @@ function setup() {
         animation.push(img);
    }
    console.log(frames)
-   frameRate(100);
+   for(let i=0;i<5;i++){
+       horses[i]=new Sprite(animation,0,i*100,random(0.1,0.3));
+   }
 
 }
 
 function draw() {
 background(0);
 stroke("#fff");
-image(animation[animation.length-1],100,100);
-
+for(let i=0;i<horses.length;i++){
+    horses[i].show();
+    horses[i].move();
+}
 
 
 }
